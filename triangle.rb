@@ -15,6 +15,8 @@
 #
 def triangle(a, b, c)
   case
+    when (a <= 0 || b <= 0 || c <= 0) || ((a+b <= c)||(a+c <= b)||(b+c <= a))
+      raise TriangleError
     when a == b && b == c
       :equilateral
     when a == b || a == c || b == c
@@ -22,7 +24,6 @@ def triangle(a, b, c)
     when a != b && a != c && b != c
       :scalene
     else
-      TriangleError
   end
 end
 
