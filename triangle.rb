@@ -24,6 +24,7 @@ def triangle(a, b, c)
     when a != b && a != c && b != c
       :scalene
     else
+      puts "Oops! Something goes wrong!"
   end
 end
 
