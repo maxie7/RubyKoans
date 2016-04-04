@@ -28,17 +28,17 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # More scoring examples are given in the tests below:
 #
 # Your goal is to write the score method.
-SETS = [0,1000,200,300,400,500,600]
-ONES = [0,100,0,0,0,50,0]
 
 def score(dice)
   # You need to write this method
+  @sets = [0,1000,200,300,400,500,600]
+  @ones = [0,100,0,0,0,50,0]
   (1..6).inject(0) do |score, roll|
       dups = dice.count(roll) # count the total instances of each number
       sets = dups / 3         # count how many sets we have
       left = dups - (3 * sets) # and get the non-set numbers
-      score += (sets * SETS[roll]) # add the score for that set times by the amount of sets
-      score += (left * ONES[roll]) # and finally add the non-set scores
+      score += (sets * @sets[roll]) # add the score for that set times by the amount of sets
+      score += (left * @ones[roll]) # and finally add the non-set scores
     end
 end
 
