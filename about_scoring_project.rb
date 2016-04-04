@@ -30,16 +30,18 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
-  @sets = [0,1000,200,300,400,500,600]
-  @ones = [0,100,0,0,0,50,0]
-  (1..6).inject(0) do |score, roll|
+   # You need to write this method
+   # This lets us change the score values of the game
+   @sets = [0,1000,200,300,400,500,600]
+   @ones = [0,100,0,0,0,50,0]
+   # We seed inject with 0 since its a dice, we can assume that we are checking values 1 through 6 for each dice face.
+   (1..6).inject(0) do |score, roll|
       dups = dice.count(roll) # count the total instances of each number
       sets = dups / 3         # count how many sets we have
       left = dups - (3 * sets) # and get the non-set numbers
       score += (sets * @sets[roll]) # add the score for that set times by the amount of sets
       score += (left * @ones[roll]) # and finally add the non-set scores
-    end
+    end # at the end of the iteration, the return value is stored back into the accumulator(score)
 end
 
 class AboutScoringProject < Neo::Koan
